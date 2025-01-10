@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -116,7 +116,7 @@
         <p>We are glad to have you here.</p>
     </main>
     <footer>
-        <p>&copy; Virtual New York ARTCC</p>
+        <p>&copy; {{ date('Y') }} Virtual New York ARTCC</p>
     </footer>
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
 </body>
