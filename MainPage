@@ -169,6 +169,17 @@
                 element.classList.toggle('dark-mode');
             });
         }
+
+        function checkAuthentication() {
+            // Replace with actual authentication check
+            const isAuthenticated = false; // Example: replace with actual logic
+
+            if (!isAuthenticated) {
+                window.location.href = 'https://nyartcc.org/WelcomePage.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', checkAuthentication);
     </script>
 </head>
 <body>
