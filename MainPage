@@ -170,16 +170,7 @@
             });
         }
 
-        function checkAuthentication() {
-            // Replace with actual authentication check
-            const isAuthenticated = false; // Example: replace with actual logic
-
-            if (!isAuthenticated) {
-                window.location.href = 'https://nyartcc.org/WelcomePage.html';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', checkAuthentication);
+        // Removed the checkAuthentication function and its call
     </script>
 </head>
 <body>
