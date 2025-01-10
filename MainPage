@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #002244;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header img {
+            height: 50px;
+            margin-left: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #002244;
+        }
+        nav ul li {
+            float: left;
+        }
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            background-color: #111;
+        }
+        nav ul li:last-child {
+            float: right;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #002244;
+            color: white;
+            text-align: left;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .tabs {
+            display: flex;
+            flex-direction: column;
+        }
+        .tab-buttons {
+            display: flex;
+            justify-content: space-around;
+            background-color: #002244;
+        }
+        .tab-buttons button {
+            background-color: #002244;
+            color: white;
+            border: none;
+            padding: 14px 16px;
+            cursor: pointer;
+            flex: 1;
+        }
+        .tab-buttons button:hover {
+            background-color: #111;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .enrollment-category {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid lightgrey;
+            padding-bottom: 10px;
+        }
+        .enrollment-category h3 {
+            flex: 1;
+            margin: 0;
+        }
+        .enrollment-category p {
+            flex: 2;
+            margin: 0 10px;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        header.dark-mode, nav ul.dark-mode, footer.dark-mode, .tab-buttons.dark-mode {
+            background-color: #1e1e1e;
+        }
+        nav ul li a.dark-mode, .tab-buttons button.dark-mode {
+            color: white;
+        }
+        nav ul li a.dark-mode:hover, .tab-buttons button.dark-mode:hover {
+            background-color: #333;
+        }
+        .tab-content.dark-mode {
+            border-top: 1px solid #444;
+        }
+        .enrollment-category.dark-mode {
+            border-bottom: 1px solid #444;
+        }
+        .tab-buttons.dark-mode {
+            background-color: #1e1e1e; /* Same as header and footer in dark mode */
+        }
+        .tab-buttons button.dark-mode {
+            background-color: #1e1e1e; /* Same as header and footer in dark mode */
+        }
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #002244;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            opacity: 0.7;
+        }
+        .dark-mode-toggle:hover {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        function openTab(event, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        function enroll(category) {
+            // Replace with actual back-end action
+            alert('Enrolling in ' + category);
+        }
+
+        function toggleDarkMode() {
+            var elements = document.querySelectorAll('body, header, nav ul, footer, .tab-buttons, nav ul li a, .tab-buttons button, .tab-content, .enrollment-category');
+            elements.forEach(function(element) {
+                element.classList.toggle('dark-mode');
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <a href="https://nyartcc.org">
+            <img src="images/header.png" alt="Header Image">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li style="float:right;"><a href="#logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="tabs">
+            <div class="tab-buttons">
+                <button class="tablinks" onclick="openTab(event, 'ProgramInformation')">Program Information</button>
+                <button class="tablinks" onclick="openTab(event, 'Enrollment')">Enrollment</button>
+                <button class="tablinks" onclick="openTab(event, 'Challenges')">Challenges</button>
+                <button class="tablinks" onclick="openTab(event, 'Achievements')">Achievements</button>
+                <button class="tablinks" onclick="openTab(event, 'Settings')">Settings</button>
+            </div>
+            <div id="ProgramInformation" class="tab-content">
+                <h2>Program Information</h2>
+                <p>Details about the program.</p>
+            </div>
+            <div id="Enrollment" class="tab-content">
+                <h2>Enrollment</h2>
+                <p>Select a path below and enroll to get started.</p>
+                <div class="enrollment-category">
+                    <h3>Air Transport Pilot</h3>
+                    <p>Part 121 Operators</p>
+                    <button onclick="enroll('AirTransportPilot')">Enroll</button>
+                </div>
+                <div class="enrollment-category">
+                    <h3>Corporate Aviation</h3>
+                    <p>Part 135 Operators</p>
+                    <button onclick="enroll('CorporateAviation')">Enroll</button>
+                </div>
+                <div class="enrollment-category">
+                    <h3>Private Pilot</h3>
+                    <p>General Aviation</p>
+                    <button onclick="enroll('PrivatePilot')">Enroll</button>
+                </div>
+            </div>
+            <div id="Challenges" class="tab-content">
+                <h2>Challenges</h2>
+                <p>Details about challenges.</p>
+            </div>
+            <div id="Achievements" class="tab-content">
+                <h2>Achievements</h2>
+                <p>Details about achievements.</p>
+            </div>
+            <div id="Settings" class="tab-content">
+                <h2>Settings</h2>
+                <p>Details about settings.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; Virtual New York ARTCC</p>
+    </footer>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+</body>
+</html>
